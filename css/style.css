@@ -1,0 +1,226 @@
+:root {
+  --pri: #3b2f2f;
+  --bg: #1c1a1a;
+  --act: #d4a373;
+  --sec: #2e2c2f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+}
+
+/* Webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 9px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a373;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg);
+  color: #fff;
+  min-height: 2000px;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+}
+
+/* Navbar */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 7%;
+  background-color: rgb(28, 26, 26, 0.8);
+  border-bottom: 1px solid #3b2f2f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.navbar .nav-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar .nav-logo span {
+  color: var(--act);
+}
+
+.navbar .nav-nav a {
+  color: #fff;
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 1rem;
+  transition: 0.1s linear;
+}
+
+.navbar .nav-nav a:hover {
+  color: var(--act);
+}
+
+.navbar .nav-nav a::after {
+  content: "";
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem solid var(--act);
+  transform: scaleX(0);
+  transition: 0.1s linear;
+}
+
+.navbar .nav-nav a:hover::after {
+  transform: scaleX(0.5);
+}
+
+.navbar .nav-extra a {
+  color: #fff;
+  margin: 0 0.5rem;
+  transition: 0.1s linear;
+}
+
+.navbar .nav-extra a:hover {
+  color: var(--act);
+}
+
+#hamburger-menu {
+  display: none;
+}
+
+/* Navbar End */
+
+/* Hero */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(
+      0deg,
+      rgb(28, 26, 26) 3%,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    url("../img/header-bg.jpg");
+
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.hero .content {
+  padding: 1.4rem 7%;
+  max-width: 60rem;
+}
+
+.hero .content h1 {
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(28, 26, 26, 0.3);
+  font-size: 5em;
+  line-height: 1.2;
+}
+
+.hero .content p {
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  line-height: 1.4;
+  text-shadow: 1px 1px 3px rgba(28, 26, 26, 0.3);
+  font-weight: 200;
+}
+
+.hero .content .cta {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 1rem 3rem;
+  font-size: 1.4rem;
+  color: #f1f1f1;
+  background-color: #d4a373;
+  border-radius: 2px;
+}
+
+.hero .content .cta:hover {
+  background-color: #ecb883;
+  box-shadow: 1px 1px 3px rgba(28, 26, 26, 0.3);
+}
+
+/* Hero End */
+
+/* About Start */
+
+.about {
+  padding: 1.4rem 7%;
+}
+
+/* Media Querries */
+
+/* Laptop */
+@media (max-width: 1366px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* Tablet */
+@media (max-width: 758px) {
+  html {
+    font-size: 62.5%;
+  }
+
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .nav-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: #fff;
+    width: 30rem;
+    height: 100vh;
+    transition: 0.3s;
+  }
+
+  .navbar .nav-nav.active {
+    right: 0;
+  }
+
+  .navbar .nav-nav a {
+    color: var(--sec);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+  }
+
+  .navbar .nav-nav a::after {
+    transform-origin: 0 0;
+  }
+
+  .navbar .nav-nav a:hover::after {
+    transform: scaleX(0.3);
+  }
+}
+
+/* Phone */
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+}
