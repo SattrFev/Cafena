@@ -164,51 +164,6 @@ body {
 
 /* About Start */
 
-.about {
-  padding: 10rem 7% 1.4rem;
-}
-
-.about h2 {
-  text-align: center;
-  font-size: 2.6rem;
-  margin-bottom: 3rem;
-}
-
-.about h2 span {
-  color: #d4a373;
-}
-
-.about .row {
-  display: flex;
-}
-
-.about .row .about-img {
-  flex: 1 1 10rem;
-  background-color: #ecb883;
-  overflow: hidden;
-  height: 40rem;
-}
-
-.about .row .about-img img {
-  height: 50rem;
-}
-
-.about .row .content {
-  flex: 1 1 35rem;
-  padding: 0 1rem;
-}
-
-.about .row .content h3 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-}
-
-.about .row .content p {
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
-  font-weight: 200;
-  line-height: 1.6;
-}
 /* Media Querries */
 
 /* Laptop */
