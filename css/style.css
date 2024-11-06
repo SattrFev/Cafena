@@ -94,6 +94,9 @@ body {
   margin: 0 0.5rem;
   transition: 0.1s linear;
 }
+.navbar .nav-extra {
+  display: flex;
+}
 
 .navbar .nav-extra a:hover {
   color: var(--act);
@@ -101,6 +104,38 @@ body {
 
 #hamburger-menu {
   display: none;
+}
+
+/* Navbar Search Form */
+/* Hide the search input initially */
+
+.search-boks-bg,
+.search-boks {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: var(--act);
+  height: 2.4rem;
+  width: 0;
+  overflow: hidden;
+  transform-origin: right;
+  transition: width 0.3s ease-in-out;
+}
+
+.search-boks input {
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  color: #1c1a1a;
+  padding: 1rem;
+  border: none;
+  outline: none;
+}
+
+/* When active, expand the input from right to left */
+.search-boks.active,
+.search-boks-bg.active {
+  width: 20rem; /* Full width when active */
 }
 
 /* Navbar End */
@@ -558,6 +593,20 @@ footer h1 span {
 
   .contact .row form {
     padding-top: 0;
+  }
+
+  .search-boks-bg,
+  .search-boks {
+    height: 5rem;
+  }
+
+  .search-boks input {
+    font-size: 1.5rem;
+  }
+
+  .search-boks-bg.active,
+  .search-boks.active {
+    width: 30rem;
   }
 }
 
