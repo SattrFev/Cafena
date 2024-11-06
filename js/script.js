@@ -17,6 +17,7 @@ document.addEventListener("click", function (e) {
 const searchbox = document.querySelector(".search-boks");
 const seachbokss = document.querySelector(".search-boks-bg");
 const seachboxinput = document.querySelector(".search-boks input");
+const wishlist = document.querySelector(".wishlist");
 
 document.querySelector("#search").onclick = () => {
   if (!searchbox.classList.contains("active")) {
@@ -31,6 +32,10 @@ document.querySelector("#search").onclick = () => {
       seachbokss.classList.remove("active");
     }, 20);
   }
+};
+
+document.querySelector("#shopping-cart").onclick = () => {
+  wishlist.classList.toggle("active");
 };
 
 // Hide
@@ -89,4 +94,20 @@ window.addEventListener("scroll", function () {
   } else {
     navbarx.style.backgroundColor = "#1c1a1acc";
   }
+});
+
+const minusBtn = document.querySelector(".minus");
+const plusBtn = document.querySelector(".plus");
+const quantityInput = document.querySelector(".quantity-input");
+
+minusBtn.addEventListener("click", () => {
+  let currentValue = parseInt(quantityInput.value);
+  if (currentValue > 1) {
+    quantityInput.value = currentValue - 1;
+  }
+});
+
+plusBtn.addEventListener("click", () => {
+  let currentValue = parseInt(quantityInput.value);
+  quantityInput.value = currentValue + 1;
 });
