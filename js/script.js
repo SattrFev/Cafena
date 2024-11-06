@@ -38,6 +38,15 @@ document.querySelector("#shopping-cart").onclick = () => {
   wishlist.classList.toggle("active");
 };
 
+document.addEventListener("click", function (e) {
+  if (
+    !wishlist.contains(e.target) &&
+    !document.querySelector("#shopping-cart").contains(e.target)
+  ) {
+    wishlist.classList.remove("active");
+  }
+});
+
 // Hide
 const seachboks = document.querySelector("#search");
 document.addEventListener("click", function (e) {
@@ -51,6 +60,9 @@ document.addEventListener("click", function (e) {
 
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape") {
+    if (wishlist.classList.contains("active")) {
+      wishlist.classList.remove("active");
+    }
     // If the Escape key is pressed and the searchbox has the 'active' class
     seachboxinput.blur();
     if (searchbox.classList.contains("active")) {
