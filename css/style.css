@@ -45,7 +45,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 1.4rem 7%;
-  background-color: rgb(28, 26, 26, 0.8);
+  background-color: #1c1a1acc;
+  transition: background-color 0.1s linear;
   border-bottom: 1px solid #3b2f2f;
   position: fixed;
   top: 0;

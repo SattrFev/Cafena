@@ -67,3 +67,26 @@ document.addEventListener("keydown", function (e) {
     }
   }
 });
+
+function HeroVisibility() {
+  const heroElement = document.querySelector(".hero");
+  if (!heroElement) return true;
+
+  const rect = heroElement.getBoundingClientRect();
+  const isNonVisible =
+    rect.bottom <= 0 ||
+    rect.top >= (window.innerHeight || document.documentElement.clientHeight) ||
+    rect.right <= 0 ||
+    rect.left >= (window.innerWidth || document.documentElement.clientWidth);
+
+  return isNonVisible;
+}
+
+const navbarx = document.querySelector(".navbar");
+window.addEventListener("scroll", function () {
+  if (HeroVisibility()) {
+    navbarx.style.backgroundColor = "#1c1a1a";
+  } else {
+    navbarx.style.backgroundColor = "#1c1a1acc";
+  }
+});
