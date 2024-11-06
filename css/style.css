@@ -12,6 +12,7 @@
   outline: none;
   border: none;
   text-decoration: none;
+  scroll-behavior: smooth;
 }
 
 /* Webkit browsers */
@@ -403,6 +404,64 @@ body {
 .menu .menu-card .menu-card-action img {
   max-height: 20px;
   max-width: 20px;
+}
+
+.wishlist {
+  padding: 2rem;
+  position: absolute;
+  top: 100%;
+  right: 0%;
+  background-color: #f1f1f1;
+  color: #1c1a1a;
+  height: 100vh;
+  width: 30rem;
+  overflow: hidden;
+  transform-origin: right;
+  transition: width 0.3s ease-in-out;
+}
+
+.wishlist .wishlist-item .wl-desc {
+  padding-left: 1rem;
+}
+
+.wishlist .wishlist-item .wl-desc h3 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.wishlist .wishlist-item .wl-desc .wl-pricex {
+}
+
+.wishlist .wishlist-item .wl-desc .wl-pricex .wl-disc h5 {
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+.wishlist .wishlist-item {
+  display: flex;
+}
+
+.wishlist .wishlist-item .wl-img {
+  height: 9rem;
+  width: 9rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  background-color: #272525;
+}
+
+.wishlist .wishlist-item .wl-img img {
+  height: 100%;
+}
+
+.wishlist .wl-checkout {
+  position: absolute;
+  bottom: 10%;
+}
+
+.wishlist h4 {
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 /* Menu End */
