@@ -437,6 +437,14 @@ body {
   border-bottom: #a8a8a89f solid 0.1rem;
   margin-top: 2rem;
   height: 9rem;
+  position: relative;
+}
+
+.wishlist .wishlist-item-container {
+  overflow: hidden;
+  height: 80%;
+  overflow-y: scroll;
+  flex-wrap: nowrap;
 }
 
 .wishlist .wishlist-item .wl-img {
@@ -453,7 +461,9 @@ body {
 
 .wishlist .wl-checkout {
   position: absolute;
-  bottom: 10%;
+  bottom: 0;
+  background-color: var(--act);
+  color: #f1f1f1;
 }
 
 .wishlist .wishlist-item .wl-desc {
@@ -997,6 +1007,18 @@ footer h1 span {
   .modal {
     width: 80vw;
     height: 25rem;
+  }
+  .quantity-container {
+    width: 7rem;
+    height: 3rem;
+  }
+
+  .quantity-container input {
+    font-size: 1.2rem;
+  }
+
+  .quantity-container button {
+    font-size: 1.6rem;
   }
 }
 
