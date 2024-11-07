@@ -18,13 +18,47 @@ const searchbox = document.querySelector(".search-boks");
 const seachbokss = document.querySelector(".search-boks-bg");
 const seachboxinput = document.querySelector(".search-boks input");
 const wishlist = document.querySelector(".wishlist");
+const modalpop = document.querySelector(".modal-faded");
+const modalcontent = document.querySelector(".modal");
+const menuCardImages = document.querySelectorAll(
+  ".menu .menu-card .menu-card-img"
+);
+
+// Select all elements with the class "menu-card-img" inside ".menu .menu-card"
+menuCardImages.forEach((element) => {
+  element.onclick = () => {
+    // Check if modalpop is defined
+    if (modalpop) {
+      if (!modalpop.classList.contains("active")) {
+        modalpop.style.visibility = "visible";
+      } else {
+        modalpop.style.visibility = "hidden";
+      }
+    }
+  };
+});
+
+document.addEventListener("click", function (e) {
+  if (
+    !modalcontent.contains(e.target) &&
+    !Array.from(menuCardImages).some((img) => img.contains(e.target))
+  ) {
+    modalpop.style.visibility = "hidden";
+  }
+});
+
+document.querySelector("#close-modal").onclick = () => {
+  modalpop.style.visibility = "hidden";
+};
 
 document.querySelector("#search").onclick = () => {
   if (!searchbox.classList.contains("active")) {
     seachbokss.classList.add("active");
     setTimeout(() => {
       searchbox.classList.add("active");
-      seachboxinput.focus();
+      setTimeout(() => {
+        seachboxinput.focus();
+      }, 200);
     }, 20);
   } else {
     searchbox.classList.remove("active");

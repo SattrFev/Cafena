@@ -39,8 +39,8 @@
 
         <!-- Search Form End -->
 
-        <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
-        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+        <a id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+        <a id="hamburger-menu"><i data-feather="menu"></i></a>
       </div>
 
       <div class="search-boks-bg" id="search-container-bg"></div>
@@ -371,9 +371,11 @@
         </div>
 
         <div class="menu-card">
-          <div class="menu-card-img">
-            <img src="img/menu/m1.jpg" alt="menu-card-cover" />
-          </div>
+          <a id="modal-show">
+            <div class="menu-card-img">
+              <img src="img/menu/m1.jpg" alt="menu-card-cover" />
+            </div>
+          </a>
           <h3 class="menu-card-title">Lorem Ipsum Dolor</h3>
           <div class="menu-card-rating">
             <div class="star-icon"></div>
@@ -397,6 +399,7 @@
             </a>
           </div>
         </div>
+
         <div class="menu-card">
           <div class="menu-card-img">
             <img src="img/menu/m5.jpg" alt="menu-card-cover" />
@@ -484,7 +487,7 @@
     </footer>
 
     <!-- Modal Detail Item Begin -->
-    <div class="modal-faded">
+    <div class="modal-faded" id="modal-faded">
       <div class="modal" id="item-detail-modal">
         <div class="modal-img">
           <img src="img/menu/m1.jpg" alt="" />
@@ -492,7 +495,7 @@
         <div class="modal-content">
           <div class="modal-title">
             <h3>Lorem ipsum dolor sit, amet consectetur adipisicing.</h3>
-            <i data-feather="x" class="close-modal"></i>
+            <a id="close-modal"><i data-feather="x" class="close-modal"></i></a>
           </div>
 
           <p>Product code : 21173009<br />Brand : Cafenã</p>
