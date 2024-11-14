@@ -203,7 +203,7 @@
       <div class="row">
         <template x-for="(item, index) in items" x-key="index">
           <div class="menu-card">
-            <div class="menu-card-img" @click="$dispatch('open-modal')">
+            <div class="menu-card-img" @click="$dispatch('open-modal', item)">
               <img :src="`img/menu/${item.img}`" :alt="item.name" />
             </div>
             <h3 class="menu-card-title" x-text="item.name"></h3>
@@ -292,9 +292,11 @@
     </footer>
 
     <!-- Modal Detail Item Begin -->
-    <div x-data="{ showModal: false }">
-      <!-- @open-modal.window="showModal = true"
-      x-show="showModal" -->
+    <div
+      x-data="{ showModal: false, selectedItem: {} }"
+      @open-modal.window="showModal = true; selectedItem = $event.detail"
+      x-show="showModal"
+    >
       <div class="modal-faded" id="modal-faded">
         <div
           class="modal"
@@ -302,17 +304,23 @@
           @click.away="showModal = false"
         >
           <div class="modal-img">
-            <img src="img/menu/m1.jpg" alt="" />
+            <img
+              :src="`img/menu/${selectedItem.img}`"
+              :alt="selectedItem.name"
+            />
           </div>
           <div class="modal-content">
             <div class="modal-title">
-              <h3>Lorem ipsum dolor sit, amet consectetur adipisicing.</h3>
-              <a id="close-modal"
-                ><i data-feather="x" class="close-modal"></i
-              ></a>
+              <h3 x-text="selectedItem.name"></h3>
+              <a id="close-modal" @click="showModal = false">
+                <i data-feather="x" class="close-modal"></i>
+              </a>
             </div>
 
-            <p>Product code : 21173009<br />Brand : Cafenã</p>
+            <p class="modal-product-info">
+              Product code: <span x-text="selectedItem.id"></span><br />Brand:
+              <b>Cafenã</b>
+            </p>
 
             <div class="modal-item-review">
               <div class="star-icon"></div>
@@ -320,21 +328,25 @@
               <div class="star-icon"></div>
               <div class="star-icon"></div>
               <div class="star-icon-g"></div>
-              <a href="">505 Reviews</a>
+              <a href="#" x-text="`${selectedItem.rating} Reviews`"></a>
             </div>
 
             <div class="modal-item-price-disc">
-              <h2>$87.00</h2>
-              <p>-34%</p>
+              <h2 x-text="`$${selectedItem.price.toFixed(2)}`"></h2>
+              <p x-text="`${selectedItem.disc}%`"></p>
             </div>
+            <h2
+              class="modal-item-price"
+              x-text="`$${(selectedItem.price * (1 + selectedItem.disc / 100)).toFixed(2)}`"
+            ></h2>
             <div class="modal-item-addtocart">
-              <h2 class="modal-item-price">$58.00</h2>
               <a href="#">Add to cart</a>
             </div>
           </div>
         </div>
       </div>
     </div>
+
     <!-- Modal Detail Item End -->
 
     <!-- Footer End -->

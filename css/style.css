@@ -679,8 +679,10 @@ body {
 }
 
 .modal .modal-img {
-  width: 23rem;
-  height: 23rem;
+  width: 27rem;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
   border: #3c3c3c solid 2px;
   border-radius: 5px;
   display: flex;
@@ -699,8 +701,12 @@ body {
   display: flex;
   width: 95%;
   height: 95%;
-  justify-content: space-between;
+  align-items: top;
   flex-direction: column;
+}
+
+.modal .modal-content .modal-product-info {
+  font-weight: 200;
 }
 
 .modal .modal-content p {
@@ -709,6 +715,7 @@ body {
 
 .modal .modal-content .modal-title {
   display: flex;
+  font-size: 2rem;
   width: 100%;
   justify-content: space-between;
 }
@@ -722,6 +729,7 @@ body {
 
 .modal .modal-content .modal-item-review {
   font-size: 0.9rem;
+  margin-top: 2rem;
   max-width: 20rem;
   display: flex;
   align-items: center;
@@ -757,6 +765,7 @@ body {
 }
 
 .modal .modal-content .modal-item-price-disc {
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
   max-width: 8rem;
@@ -782,24 +791,27 @@ body {
   background-color: #ecb883;
 }
 
-.modal .modal-content .modal-item-addtocart .modal-item-price {
+.modal .modal-content .modal-item-price {
   font-weight: 600;
+  margin-top: 0.5rem;
   font-size: 2.3rem;
 }
 
 .modal .modal-content .modal-item-addtocart {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
+  position: relative; /* Needed for absolute positioning of the <a> element */
 }
 
 .modal .modal-content .modal-item-addtocart a {
   text-transform: none;
-  display: flex;
-  align-items: center;
   color: #f1f1f1;
   padding: 0.7rem 2rem;
   border-radius: 8px;
   background-color: var(--act);
+  align-self: flex-end; /* Positions <a> at the bottom of the parent */
+  margin-top: auto; /* Pushes <a> down without requiring the parent to be full height */
 }
 
 .modal .modal-content .modal-item-addtocart a:hover {
@@ -924,6 +936,9 @@ footer h1 span {
   .modal {
     width: 55vw;
     height: 25rem;
+  }
+  .modal .modal-content .modal-title {
+    font-size: 1.6rem;
   }
 }
 

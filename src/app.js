@@ -2,7 +2,7 @@ document.addEventListener("alpine:init", () => {
   Alpine.data("menu", () => ({
     items: [
       {
-        id: 1,
+        id: 135903,
         name: "Midnight Brew",
         img: "m1.jpg",
         price: 42,
@@ -10,7 +10,7 @@ document.addEventListener("alpine:init", () => {
         rating: 122,
       },
       {
-        id: 2,
+        id: 443624,
         name: "Essence Series",
         img: "m2.jpg",
         price: 87,
@@ -18,7 +18,7 @@ document.addEventListener("alpine:init", () => {
         rating: 71,
       },
       {
-        id: 3,
+        id: 515139,
         name: "Bean & Brew",
         img: "m3.jpg",
         price: 24,
@@ -26,7 +26,7 @@ document.addEventListener("alpine:init", () => {
         rating: 182,
       },
       {
-        id: 4,
+        id: 721299,
         name: "Greenleaf Blend",
         img: "m4.jpg",
         price: 50,
@@ -34,7 +34,7 @@ document.addEventListener("alpine:init", () => {
         rating: 14,
       },
       {
-        id: 5,
+        id: 799942,
         name: "Noir Roast",
         img: "m5.jpg",
         price: 82,
@@ -42,7 +42,7 @@ document.addEventListener("alpine:init", () => {
         rating: 61,
       },
       {
-        id: 6,
+        id: 965030,
         name: "Autumn Aroma",
         img: "m6.jpg",
         price: 152,
