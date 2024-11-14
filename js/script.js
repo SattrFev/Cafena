@@ -18,20 +18,7 @@ const searchbox = document.querySelector(".search-boks");
 const seachbokss = document.querySelector(".search-boks-bg");
 const seachboxinput = document.querySelector(".search-boks input");
 const wishlist = document.querySelector(".wishlist");
-const modalpop = document.querySelector(".modal-faded");
-const modalcontent = document.querySelector(".modal");
 const menuCardImages = document.querySelectorAll(".menu-card-img");
-
-document.addEventListener("click", function (e) {
-  if (!modalcontent.contains(e.target)) {
-    modalpop.style.visibility = "hidden";
-  } else {
-  }
-});
-
-document.querySelector("#close-modal").onclick = () => {
-  modalpop.style.visibility = "hidden";
-};
 
 document.querySelector("#search").onclick = () => {
   if (!searchbox.classList.contains("active")) {
