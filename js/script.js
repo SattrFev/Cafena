@@ -20,30 +20,12 @@ const seachboxinput = document.querySelector(".search-boks input");
 const wishlist = document.querySelector(".wishlist");
 const modalpop = document.querySelector(".modal-faded");
 const modalcontent = document.querySelector(".modal");
-const menuCardImages = document.querySelectorAll(
-  ".menu .menu-card .menu-card-img"
-);
-
-// Select all elements with the class "menu-card-img" inside ".menu .menu-card"
-menuCardImages.forEach((element) => {
-  element.onclick = () => {
-    // Check if modalpop is defined
-    if (modalpop) {
-      if (!modalpop.classList.contains("active")) {
-        modalpop.style.visibility = "visible";
-      } else {
-        modalpop.style.visibility = "hidden";
-      }
-    }
-  };
-});
+const menuCardImages = document.querySelectorAll(".menu-card-img");
 
 document.addEventListener("click", function (e) {
-  if (
-    !modalcontent.contains(e.target) &&
-    !Array.from(menuCardImages).some((img) => img.contains(e.target))
-  ) {
+  if (!modalcontent.contains(e.target)) {
     modalpop.style.visibility = "hidden";
+  } else {
   }
 });
 
@@ -72,14 +54,14 @@ document.querySelector("#shopping-cart").onclick = () => {
   wishlist.classList.toggle("active");
 };
 
-document.addEventListener("click", function (e) {
-  if (
-    !wishlist.contains(e.target) &&
-    !document.querySelector("#shopping-cart").contains(e.target)
-  ) {
-    wishlist.classList.remove("active");
-  }
-});
+// document.addEventListener("click", function (e) {
+//   if (
+//     !wishlist.contains(e.target) &&
+//     !document.querySelector("#shopping-cart").contains(e.target)
+//   ) {
+//     wishlist.classList.remove("active");
+//   }
+// });
 
 // Hide
 const seachboks = document.querySelector("#search");
@@ -140,20 +122,4 @@ window.addEventListener("scroll", function () {
   } else {
     navbarx.style.backgroundColor = "#1c1a1acc";
   }
-});
-
-const minusBtn = document.querySelector(".minus");
-const plusBtn = document.querySelector(".plus");
-const quantityInput = document.querySelector(".quantity-input");
-
-minusBtn.addEventListener("click", () => {
-  let currentValue = parseInt(quantityInput.value);
-  if (currentValue > 1) {
-    quantityInput.value = currentValue - 1;
-  }
-});
-
-plusBtn.addEventListener("click", () => {
-  let currentValue = parseInt(quantityInput.value);
-  quantityInput.value = currentValue + 1;
 });

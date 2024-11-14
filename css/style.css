@@ -409,6 +409,21 @@ body {
   max-width: 20px;
 }
 
+#shopping-cart {
+  position: relative;
+}
+
+#shopping-cart .qty-badge {
+  display: inline-block;
+  padding: 1px 5px;
+  background-color: red;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  position: absolute;
+  top: 0px;
+  right: -10px;
+}
+
 .wishlist {
   padding: 2rem;
   position: absolute;
@@ -439,11 +454,10 @@ body {
   height: 9rem;
   position: relative;
 }
-
 .wishlist .wishlist-item-container {
   overflow: hidden;
   height: 80%;
-  overflow-y: scroll;
+  overflow-y: auto;
   flex-wrap: nowrap;
 }
 
@@ -666,9 +680,14 @@ body {
   border: #3c3c3c solid 2px;
   border-radius: 5px;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .modal .modal-img img {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
   height: 100%;
 }
 
