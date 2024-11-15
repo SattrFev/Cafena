@@ -147,9 +147,25 @@
             </template>
           </div>
           <div x-show="$store.wl.items.length" class="wishlist-item-checkout">
+            <div class="form-container">
+              <input placeholder="Name" type="text" name="name" id="name" />
+              <input placeholder="Email" type="email" name="email" id="email" />
+              <input
+                placeholder="Phone Number"
+                type="number"
+                name="phone"
+                id="phone"
+                autocomplete="off"
+              />
+            </div>
+
             <div class="wishlist-item-checkout-sec">
-              <h3 x-text="$store.wl.total.toFixed(2)"></h3>
-              <a href="#">Checkout</a>
+              <div class="total">
+                <p>Total</p>
+                <h3 x-text="$store.wl.total.toFixed(2)"></h3>
+              </div>
+              <div class="checkout-button-container"></div>
+              <button href="#">Checkout</button>
             </div>
           </div>
         </div>
