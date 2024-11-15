@@ -56,52 +56,66 @@ document.addEventListener("alpine:init", () => {
     items: [],
     total: 0,
     quantity: 0,
+
+    // Utility function to calculate discounted price
+    calculateDiscountedPrice(price, discount) {
+      return price - price * (Math.abs(discount) / 100);
+    },
+
+    // Recalculate total from all items
+    recalculateTotal() {
+      this.total = this.items.reduce(
+        (sum, item) =>
+          sum +
+          this.calculateDiscountedPrice(item.price, item.disc) * item.quantity,
+        0
+      );
+    },
+
     add(newItem) {
       const wlItem = this.items.find((item) => item.id === newItem.id);
 
       if (!wlItem) {
-        this.items.push({ ...newItem, quantity: 1, total: newItem.price });
-        this.quantity++;
-        this.total += parseFloat(
-          newItem.price - newItem.price * (Math.abs(newItem.disc) / 100)
+        const discountedPrice = this.calculateDiscountedPrice(
+          newItem.price,
+          newItem.disc
         );
+        this.items.push({ ...newItem, quantity: 1, total: discountedPrice });
+        this.quantity++;
       } else {
-        this.items = this.items.map((item) => {
-          if (item.id !== newItem.id) {
-            return item;
-          } else {
-            item.quantity++;
-            item.total = item.price * item.quantity;
-            this.quantity++;
-            this.total += parseFloat(
-              item.price - item.price * (Math.abs(item.disc) / 100)
-            );
-            return item;
-          }
-        });
+        wlItem.quantity++;
+        wlItem.total =
+          this.calculateDiscountedPrice(wlItem.price, wlItem.disc) *
+          wlItem.quantity;
       }
+
+      this.recalculateTotal();
     },
+
     remove(id) {
       const wlItem = this.items.find((item) => item.id === id);
-      if (wlItem.quantity > 1) {
-        this.items = this.items.map((item) => {
-          if (item.id !== id) {
-            return item;
-          } else {
-            item.quantity--;
-            item.total = item.price * item.quantity;
-            this.quantity--;
-            this.total -= parseFloat(
-              item.price - item.price * (Math.abs(item.disc) / 100)
-            );
-            return item;
-          }
-        });
-      } else if (wlItem.quantity === 1) {
-        this.items = this.items.filter((item) => item.id !== id);
-        this.quantity--;
-        this.total -= wlItem.price;
+      if (wlItem) {
+        if (wlItem.quantity > 1) {
+          wlItem.quantity--;
+          wlItem.total =
+            this.calculateDiscountedPrice(wlItem.price, wlItem.disc) *
+            wlItem.quantity;
+        } else {
+          this.items = this.items.filter((item) => item.id !== id);
+        }
+
+        this.recalculateTotal();
+        this.quantity = this.items.reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
       }
+    },
+
+    delete(id) {
+      this.items = this.items.filter((item) => item.id !== id);
+      this.recalculateTotal();
+      this.quantity = this.items.reduce((sum, item) => sum + item.quantity, 0);
     },
   });
 });

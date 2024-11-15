@@ -447,6 +447,12 @@ body {
   font-weight: 400;
 }
 
+.wishlist .wishlist-kontainer {
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+}
+
 .wishlist .wishlist-item {
   display: flex;
   border-bottom: #a8a8a89f solid 0.1rem;
@@ -456,7 +462,8 @@ body {
 }
 .wishlist .wishlist-item-container {
   overflow: hidden;
-  height: 80%;
+  height: 74%;
+  background-color: #1e2235;
   overflow-y: auto;
   flex-wrap: nowrap;
 }
@@ -548,6 +555,55 @@ body {
 .wishlist .wishlist-item .wl-desc .wl-pricex .wl-final-price h2 {
   font-weight: 600;
   font-size: 1.7rem;
+}
+
+.wishlist .wishlist-item-checkout {
+  display: flex;
+  background-color: #787878;
+  flex-direction: column;
+  margin: 0.4rem 0rem;
+  height: 20%;
+  margin-bottom: 1rem;
+}
+
+.wishlist .wishlist-item-checkout h3 {
+  color: white;
+  font-weight: 500;
+  font-size: 1.4rem;
+}
+
+.wishlist .wishlist-item-checkout h3::before {
+  content: "$";
+}
+.wishlist .wishlist-item-checkout .wishlist-item-checkout-sec {
+  display: flex;
+  background-color: #d4a373;
+  margin-top: auto;
+  border-radius: 0 0 10px 10px;
+  height: 50%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+.wishlist .wishlist-item-checkout .wishlist-item-checkout-sec a {
+  position: relative; /* Creates a stacking context */
+  color: rgb(69, 69, 69);
+  height: 60%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  align-items: center;
+  background-color: #ffffff;
+  overflow: hidden; /* Prevents ::after from spilling outside */
+  z-index: 1; /* Ensures the text stays on top */
+}
+
+.wishlist .wishlist-item-checkout .wishlist-item-checkout-sec a:hover {
+  transition: all 150ms ease;
+  box-shadow: 9px 9px 31px -8px rgba(0, 0, 0, 0.75);
 }
 
 .quantity-container {
