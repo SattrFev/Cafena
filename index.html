@@ -148,6 +148,7 @@
           </div>
           <div x-show="$store.wl.items.length" class="wishlist-item-checkout">
             <div class="form-container">
+              <p>Customer Form</p>
               <input placeholder="Name" type="text" name="name" id="name" />
               <input placeholder="Email" type="email" name="email" id="email" />
               <input
@@ -165,7 +166,7 @@
                 <h3 x-text="$store.wl.total.toFixed(2)"></h3>
               </div>
               <div class="checkout-button-container"></div>
-              <button href="#">Checkout</button>
+              <button @click="valCustomerForm()" href="#">Checkout</button>
             </div>
           </div>
         </div>

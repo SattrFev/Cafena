@@ -20,6 +20,13 @@ const seachboxinput = document.querySelector(".search-boks input");
 const wishlist = document.querySelector(".wishlist");
 const menuCardImages = document.querySelectorAll(".menu-card-img");
 
+// Add event listener to reset background on input
+document.querySelectorAll(".form-container input").forEach((input) => {
+  input.addEventListener("input", () => {
+    input.style.backgroundColor = "white";
+  });
+});
+
 document.querySelector("#search").onclick = () => {
   if (!searchbox.classList.contains("active")) {
     seachbokss.classList.add("active");

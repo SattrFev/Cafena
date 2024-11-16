@@ -566,19 +566,28 @@ body {
 
 .wishlist .wishlist-item-checkout .form-container {
   height: 63%;
-  padding: 1rem;
+  padding: 0.5rem 1rem 1rem;
   border-radius: 10px 10px 0 0;
   flex-direction: column;
-  background-color: #3b2f2f;
+  background-color: #e4e4e4;
   display: flex;
   justify-content: space-between;
 }
-
+.wishlist .wishlist-item-checkout .form-container p {
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: #000000;
+}
 .wishlist .wishlist-item-checkout .form-container input {
-  height: 1.9rem;
+  height: 2.3rem;
   background-color: #ffffff;
   padding: 0 0.5rem;
   border-radius: 5px;
+}
+
+.wishlist .wishlist-item-checkout .form-container input:focus {
+  background-color: rgb(255, 255, 255);
 }
 
 .wishlist .wishlist-item-checkout .wishlist-item-checkout-sec {
@@ -599,7 +608,7 @@ body {
   width: 40%;
   display: flex;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.3rem;
   border-radius: 10px;
   font-weight: 600;
   align-items: center;

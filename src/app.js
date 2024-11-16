@@ -119,3 +119,42 @@ document.addEventListener("alpine:init", () => {
     },
   });
 });
+
+function valCustomerForm() {
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const phone = phoneInput.value.trim();
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneMinLength = 10;
+
+  // Reset styles
+  nameInput.style.backgroundColor = "";
+  emailInput.style.backgroundColor = "";
+  phoneInput.style.backgroundColor = "";
+
+  let isValid = true;
+
+  if (!name) {
+    nameInput.style.backgroundColor = "lightcoral"; // Indicate invalid field
+    isValid = false;
+  }
+
+  if (!emailPattern.test(email)) {
+    emailInput.style.backgroundColor = "lightcoral"; // Indicate invalid field
+    isValid = false;
+  }
+
+  if (phone.length < phoneMinLength) {
+    phoneInput.style.backgroundColor = "lightcoral"; // Indicate invalid field
+    isValid = false;
+  }
+
+  if (isValid) {
+    alert(`Name: ${name}, Email: ${email}, Number: ${phone}`);
+  }
+}
