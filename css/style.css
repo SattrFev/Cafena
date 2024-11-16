@@ -1215,3 +1215,16 @@ footer h1 span {
     font-size: 0.8rem;
   }
 }
+
+/* Slimmer Phone */
+@media (max-width: 433px) {
+  html {
+    font-size: 52.5%;
+  }
+  .menu .menu-card {
+    background-color: #2e2c2f;
+    width: 19rem;
+    border-radius: 7px;
+    overflow: hidden;
+  }
+}
