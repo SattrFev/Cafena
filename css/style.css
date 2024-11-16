@@ -1218,12 +1218,33 @@ footer h1 span {
 
 /* Slimmer Phone */
 @media (max-width: 433px) {
-  html {
-    font-size: 52.5%;
+  .menu .row {
+    background-color: #1e2235;
   }
+
   .menu .menu-card {
     background-color: #2e2c2f;
-    width: 19rem;
+    max-width: 18rem;
+    border-radius: 7px;
+    overflow: hidden;
+  }
+
+  .menu .menu-card .menu-card-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* More Slimmer Phone */
+@media (max-width: 360px) {
+  .menu .menu-card .menu-card-action,
+  .menu .menu-card .menu-card-rating,
+  .menu .menu-card .menu-card-title {
+    padding: 0 1rem;
+  }
+
+  .menu .menu-card {
+    background-color: #2e2c2f;
+    max-width: 16.5rem;
     border-radius: 7px;
     overflow: hidden;
   }
