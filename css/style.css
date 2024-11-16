@@ -1218,10 +1218,6 @@ footer h1 span {
 
 /* Slimmer Phone */
 @media (max-width: 433px) {
-  .menu .row {
-    background-color: #1e2235;
-  }
-
   .menu .menu-card {
     background-color: #2e2c2f;
     max-width: 18rem;
