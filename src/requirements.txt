@@ -1,0 +1,4 @@
+flask
+flask-cors
+midtransclient
+python-dotenv
