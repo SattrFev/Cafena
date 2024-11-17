@@ -448,7 +448,7 @@ body {
 }
 
 .wishlist .wishlist-kontainer {
-  height: 88%;
+  height: 85%;
   display: flex;
   flex-direction: column;
 }
@@ -462,7 +462,7 @@ body {
 }
 .wishlist .wishlist-item-container {
   overflow: hidden;
-  height: 74%;
+  height: 60%;
   overflow-y: auto;
   flex-wrap: nowrap;
 }
@@ -559,30 +559,32 @@ body {
 .wishlist .wishlist-item-checkout {
   display: flex;
   flex-direction: column;
-  margin: 0.4rem 0rem;
-  height: 30%;
-  margin-bottom: 1rem;
+  margin-top: auto;
+  width: 100%;
+  height: 35%;
+  position: relative;
 }
 
 .wishlist .wishlist-item-checkout .form-container {
-  height: 63%;
+  height: 75%;
   padding: 0.5rem 1rem 1rem;
   border-radius: 10px 10px 0 0;
   flex-direction: column;
   background-color: #e4e4e4;
   display: flex;
-  justify-content: space-between;
+  gap: 0.3rem;
 }
 .wishlist .wishlist-item-checkout .form-container p {
   font-weight: 400;
-  margin: 0 auto;
-  font-size: 1.2rem;
+  margin: 0 auto 0.4rem auto;
+  font-size: 1.1rem;
   color: #000000;
 }
 .wishlist .wishlist-item-checkout .form-container input {
-  height: 2.3rem;
+  height: 2rem;
   background-color: #ffffff;
   padding: 0 0.5rem;
+  border: 1px inset transparent;
   border-radius: 5px;
 }
 
@@ -1035,6 +1037,15 @@ footer h1 span {
   .modal .modal-content .modal-title {
     font-size: 1.6rem;
   }
+
+  .wishlist .wishlist-item-checkout .form-container {
+    height: 60%;
+    gap: 5px;
+  }
+
+  .wishlist .wishlist-item-checkout .form-container input {
+    height: 5rem;
+  }
 }
 
 /* Tablet */
@@ -1149,7 +1160,12 @@ footer h1 span {
   html {
     font-size: 55%;
   }
-
+  .wishlist .wishlist-item-checkout .wishlist-item-checkout-sec h3 {
+    font-size: 2rem;
+  }
+  .wishlist .wishlist-item-checkout .wishlist-item-checkout-sec p {
+    font-size: 1.5rem;
+  }
   .modal {
     display: block;
     width: 70vw;

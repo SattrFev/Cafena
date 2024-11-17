@@ -23,7 +23,6 @@
     <script src="src/app.js"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -66,7 +65,7 @@
               <div class="wishlist-item">
                 <div
                   x-data="{ checked: true }"
-                  @click="checked = !checked"
+                  @click="$store.wl.toggleCheck(item.id)"
                   class="checkbox-wrapper-30"
                 >
                   <span class="checkbox">
@@ -166,7 +165,9 @@
                 <h3 x-text="$store.wl.total.toFixed(2)"></h3>
               </div>
               <div class="checkout-button-container"></div>
-              <button @click="valCustomerForm()" href="#">Checkout</button>
+              <button @click.prevent="valCustomerForm()" href="#">
+                Checkout
+              </button>
             </div>
           </div>
         </div>
@@ -386,4 +387,13 @@
     <!-- Javascript -->
     <script src="js/script.js"></script>
   </body>
+  <!-- Midtrans -->
+  <script>
+    ClientToken().then((clientKey) => {
+      const script = document.createElement("script");
+      script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+      script.setAttribute("data-client-key", clientKey);
+      document.head.appendChild(script);
+    });
+  </script>
 </html>

@@ -53,21 +53,24 @@ document.addEventListener("alpine:init", () => {
   }));
 
   Alpine.store("wl", {
-    items: [],
-    total: 0,
-    quantity: 0,
+    items: [], // Array of items in the cart
+    total: 0, // Total cost of checked items
+    quantity: 0, // Total quantity of items
 
     // Utility function to calculate discounted price
     calculateDiscountedPrice(price, discount) {
       return price - price * (Math.abs(discount) / 100);
     },
 
-    // Recalculate total from all items
+    // Recalculate total only for checked items
     recalculateTotal() {
       this.total = this.items.reduce(
         (sum, item) =>
-          sum +
-          this.calculateDiscountedPrice(item.price, item.disc) * item.quantity,
+          item.checked // Only include checked items
+            ? sum +
+              this.calculateDiscountedPrice(item.price, item.disc) *
+                item.quantity
+            : sum,
         0
       );
     },
@@ -80,7 +83,12 @@ document.addEventListener("alpine:init", () => {
           newItem.price,
           newItem.disc
         );
-        this.items.push({ ...newItem, quantity: 1, total: discountedPrice });
+        this.items.push({
+          ...newItem,
+          quantity: 1,
+          total: discountedPrice,
+          checked: true, // Default to checked when added
+        });
         this.quantity++;
       } else {
         wlItem.quantity++;
@@ -117,6 +125,14 @@ document.addEventListener("alpine:init", () => {
       this.recalculateTotal();
       this.quantity = this.items.reduce((sum, item) => sum + item.quantity, 0);
     },
+
+    toggleCheck(id) {
+      const wlItem = this.items.find((item) => item.id === id);
+      if (wlItem) {
+        wlItem.checked = !wlItem.checked; // Toggle the checked state
+        this.recalculateTotal(); // Recalculate the total
+      }
+    },
   });
 });
 
@@ -130,31 +146,107 @@ function valCustomerForm() {
   const phone = phoneInput.value.trim();
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneMinLength = 10;
-
-  // Reset styles
-  nameInput.style.backgroundColor = "";
-  emailInput.style.backgroundColor = "";
-  phoneInput.style.backgroundColor = "";
-
+  const phoneMinLength = 8;
   let isValid = true;
 
+  // Reset styles
+  nameInput.style.border = "";
+  emailInput.style.border = "";
+  phoneInput.style.border = "";
+
+  // Validate form fields
   if (!name) {
-    nameInput.style.backgroundColor = "lightcoral"; // Indicate invalid field
+    nameInput.style.border = "1px inset rgb(220, 80, 80)";
     isValid = false;
   }
 
   if (!emailPattern.test(email)) {
-    emailInput.style.backgroundColor = "lightcoral"; // Indicate invalid field
+    emailInput.style.border = "1px inset rgb(220, 80, 80)";
     isValid = false;
   }
 
   if (phone.length < phoneMinLength) {
-    phoneInput.style.backgroundColor = "lightcoral"; // Indicate invalid field
+    phoneInput.style.border = "1px inset rgb(220, 80, 80)";
     isValid = false;
   }
 
   if (isValid) {
-    alert(`Name: ${name}, Email: ${email}, Number: ${phone}`);
+    // Collect checked items
+    const selectedItems = Alpine.store("wl").items.filter(
+      (item) => item.checked
+    );
+
+    // Create the object
+    const data = {
+      name: name,
+      email: email,
+      phone: phone,
+      items: selectedItems.map((item) => ({
+        id: item.id,
+        productName: item.name,
+        productQty: item.quantity,
+        totalPrice: removeDecimalPoint(item.total.toFixed(2)),
+      })),
+      total: removeDecimalPoint(
+        selectedItems.reduce((sum, item) => sum + item.total, 0).toFixed(2)
+      ),
+    };
+
+    console.log(data);
+
+    try {
+      fetch("http://localhost:5501/app", {
+        method: "POST",
+        mode: "cors", // Ensure CORS is enabled
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data), // Send data as JSON
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              "Network response was not ok " + response.statusText
+            );
+          }
+          return response.json(); // Parse response to JSON
+        })
+        .then((responseData) => {
+          const Ttoken = responseData.transaction_token;
+          snap.pay(Ttoken);
+        })
+        .catch((err) => {
+          console.log("Error:", err.message); // Log any error that occurs
+        });
+    } catch (err) {
+      console.log("Error:", err.message);
+    }
+
+    // Use the data to call placeOrder
+
+    // Open WhatsApp link
+    // window.open(
+    //   "http://wa.me/6282322991181?text=" + encodeURIComponent(pesanWA(data))
+    // );
   }
 }
+
+function removeDecimalPoint(num) {
+  return parseInt(num.toString().replace(".", ""));
+}
+
+const pesanWA = (obj) => {
+  return `Data Customer:
+Name: ${obj.nama}
+Email: ${obj.email}
+No: ${obj.nomor}
+
+Order:
+${obj.items
+  .map((item) => `- ${item.namaProduk} (${item.jumlah} x $${item.totalHarga})`)
+  .join("\n")}
+
+Total: $${obj.total}
+
+Thank you!`;
+};

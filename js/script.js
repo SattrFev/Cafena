@@ -23,7 +23,7 @@ const menuCardImages = document.querySelectorAll(".menu-card-img");
 // Add event listener to reset background on input
 document.querySelectorAll(".form-container input").forEach((input) => {
   input.addEventListener("input", () => {
-    input.style.backgroundColor = "white";
+    input.style.border = "1px transparent inset";
   });
 });
 
@@ -117,3 +117,30 @@ window.addEventListener("scroll", function () {
     navbarx.style.backgroundColor = "#1c1a1acc";
   }
 });
+
+async function ClientToken() {
+  try {
+    const response = await fetch("http://localhost:5501/get-midtrans-key", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data.clientKey);
+    return data.clientKey; // Return the clientKey properly
+  } catch (error) {
+    console.error("Error fetching Midtrans key:", error);
+    throw error; // Re-throw the error if necessary
+  }
+}
+
+function helworld() {
+  console.log("fuck");
+}
