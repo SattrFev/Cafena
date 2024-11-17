@@ -195,7 +195,7 @@ function valCustomerForm() {
     console.log(data);
 
     try {
-      fetch("http://localhost:5501/app", {
+      fetch("https://ry-cafena.vercel.app/api/app", {
         method: "POST",
         mode: "cors", // Ensure CORS is enabled
         headers: {

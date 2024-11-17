@@ -8,13 +8,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app, resources={r"/app": {"origins": "http://127.0.0.1:5500"}})
-CORS(app, resources={r"/get-midtrans-key": {"origins": "http://127.0.0.1:5500"}})
+
+# CORS setup for all origins (or you can set specific Vercel frontend URL)
+CORS(app, resources={r"/app": {"origins": "*"}})
+CORS(app, resources={r"/get-midtrans-key": {"origins": "*"}})
 
 def order_id(length=17):
     return ''.join(random.choices(string.ascii_uppercase + string.digits, k=length))
-
-@app.route
 
 @app.route('/get-midtrans-key', methods=['GET', 'OPTIONS'])
 def get_midtrans_key():
@@ -51,4 +51,4 @@ def create_transaction():
     return jsonify({"transaction_token": transaction_token})
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5501)
+    app.run(debug=True)

@@ -120,13 +120,16 @@ window.addEventListener("scroll", function () {
 
 async function ClientToken() {
   try {
-    const response = await fetch("http://localhost:5501/get-midtrans-key", {
-      method: "GET",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://ry-cafena.vercel.app/get-midtrans-key",
+      {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -139,8 +142,4 @@ async function ClientToken() {
     console.error("Error fetching Midtrans key:", error);
     throw error; // Re-throw the error if necessary
   }
-}
-
-function helworld() {
-  console.log("fuck");
 }
