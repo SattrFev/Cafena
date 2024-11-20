@@ -120,7 +120,7 @@ window.addEventListener("scroll", function () {
 
 async function ClientToken() {
   try {
-    const response = await fetch("http://127.0.0.1:5000/get-midtrans-key", {
+    const response = await fetch("https://re-cafena.vercel.app/get-midtrans-key", {
       method: "GET",
       mode: "cors",
       headers: {
