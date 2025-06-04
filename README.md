@@ -1,6 +1,6 @@
 
 
-# ☕ Cafenã – Web UI untuk Toko Kopi Kemasanku
+# ☕ Cafenã – Web UI E-Commerce Penjualan Kopi
 
 Cafenã adalah proyek desain website toko kopi kemasan yang dibuat untuk **ujian kompetensi sekolah**. Dibuat dalam waktu **8 jam**, project ini fokus pada **desain antarmuka pengguna (UI)** dengan interaktivitas sederhana, tanpa backend serius atau database.
 
