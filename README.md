@@ -32,10 +32,8 @@ Cafenã adalah proyek desain website toko kopi kemasan yang dibuat untuk **ujian
 
 ## 🛠️ Teknologi yang Digunakan
 
-- 🐘 **PHP** (Plain)
-- 🧬 **MySQL** (Database)
 - 🌐 **HTML + JavaScript**
-- 🎨 **TailwindCSS** (Desain modern & responsif)
+- 🎨 **CSS** (Plainn)
 
 > 🧠 Waktu itu belum bisa pakai **Tailwind** dan **PHP**, jadi semua dihandle secara hardcoded dan improvisasi.
 
